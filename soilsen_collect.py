@@ -7,7 +7,7 @@ i2c_bus = board.I2C()
 
 ss = Seesaw(i2c_bus, addr=0x36)
 
-with open ("/home/anniespi/soildata.csv", "a") as log:
+with open ("/home/pi/soildata.csv", "a") as log:
 
 
 	while True:
