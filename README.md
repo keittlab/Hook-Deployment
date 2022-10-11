@@ -34,6 +34,12 @@ should see this output
 /dev/i2c-1 /dev/spidev0.0 /dev/spidev0.1
 ````
 
+# Check the addresses for the i2c
+```
+sudo i2cdetect -y 1
+````
+BME280 should be in 0x77, Soil moisture sensors should be 0x36, and the RTC should be 0x
+
 # In the Hook Deployment Directory run this command
 ```
 python3 blinkatest.py
