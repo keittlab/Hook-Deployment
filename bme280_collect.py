@@ -11,7 +11,7 @@ bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
 bme280.sea_level_pressure = 1019
 
 # Collecting and writing data to the CSV
-with open("/home/pi/data.csv", "a") as log:
+with open("/home/pi/bmedata.csv", "a") as log:
 	while True:
 		# creating the data variables
 		temp = bme280.temperature
