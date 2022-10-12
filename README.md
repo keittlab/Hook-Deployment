@@ -40,7 +40,7 @@ Enter this command to check the visible devices
 ```
 i2cdetect -y 1
 ```
-Should see this output 
+Should see this output /n 
 ![image](https://user-images.githubusercontent.com/45701166/195462601-e89c3723-71dc-4676-90ad-39358cb91333.png)
 The BME280 address should be 0x77, The Soil Moisture sensors should be 0x36 and 0x37, the RTC should be 0xUU in cell 0x68 
 
