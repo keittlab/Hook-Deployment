@@ -54,3 +54,10 @@ pip3 install adafruit-circuitpython-bme280
 ```
 sudo pip3 install adafruit-circuitpython-seesaw
 ```
+
+# Add support for exFAT SD card on RPi
+```
+sudo apt-get install exfat-fuse
+sudo apt-get install exfat-utils
+```
+
