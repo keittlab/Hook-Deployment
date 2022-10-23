@@ -10,9 +10,18 @@ from adafruit_seesaw.seesaw import Seesaw
 
 # creating the sensor objects, uses the boards default I2C bus
 i2c = board.I2C()
-bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
-ss = Seesaw(i2c, addr = 0x36)
-ss2 = Seesaw(i2c, addr = 0x37)
+try:
+	bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
+except:
+	print("BME280 i2c address could not be found.")
+try:
+	ss = Seesaw(i2c, addr = 0x36)
+except:
+	print("Soil Moisture Sensor 1 at 0x36 could not be found.")
+try:
+	ss2 = Seesaw(i2c, addr = 0x37)
+except:
+	print("Soil Moisture Sensor 2 at 0x37 could not be found.")
 
 # setting location's Pressure (hPa) at Sea level, Austin TX
 bme280.sea_level_pressure = 1019
@@ -39,14 +48,31 @@ if Path(FileName).exists() is False:
 with open(FileName, "a") as log:
 #	while True:
 		# creating the data variables
-		temp = bme280.temperature
-		hum = bme280.relative_humidity
-		pres = bme280.pressure
-		alt = bme280.altitude
-		mois1 = ss.moisture_read()
-		smtemp1 = ss.get_temp()
-		mois2 = ss2.moisture_read()
-		smtemp2 = ss2.moisture_read()
+		try:
+			temp = bme280.temperature
+			hum = bme280.relative_humidity
+			pres = bme280.pressure
+			alt = bme280.altitude
+		except:
+			print("Could not collect data from the BME280.")
+			temp="n/a"
+			hum="n/a"
+			pres="n/a"
+			alt="n/a"
+		try:
+			mois1 = ss.moisture_read()
+			smtemp1 = ss.get_temp()
+		except:
+			print("Could not collect data from SS1 at 0x36.")
+			mois1="n/a"
+			smtemp1="n/a"
+		try:
+			mois2 = ss2.moisture_read()
+			smtemp2 = ss2.moisture_read()
+		except:
+			print("Could not collect data from SS2 at 0x37.")
+			mois2="n/a"
+			smtemp2="n/a"
 		
 		log.write("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n".format(str(Hostname),str(Location),strftime("%Y-%m-%d"),strftime("%H:%M:%S"),str(temp), str(hum), str(pres),str(alt),str(smtemp1),str(mois1),str(smtemp2),str(mois2)))
 		log.close()
