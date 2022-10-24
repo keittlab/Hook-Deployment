@@ -120,7 +120,7 @@ sudo nano /boot/config.txt
 ```
 Add this line to the end of the file with the pin number, in this case 27
 ```
-dtoverylay=gpio-shutdown.gpio_pin=27,active_low=1,gpio_pull=up
+dtoverylay=gpio-shutdown,gpio_pin=27,active_low=1,gpio_pull=up
 ```
 Exit and save the file then reboot
 ```
