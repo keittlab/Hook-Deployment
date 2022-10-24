@@ -63,7 +63,13 @@ sudo pip3 install --upgrade adafruit-python-shell
 wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
 sudo python3 raspi-blinka.py
 ```
-choose yes and yes
+choose yes and yes, the system should Reboot
+# Test Blinka
+```
+cd Hook-Deployment/
+python3 blinkatest.py
+```
+Verify that everything works
 
 # RTC Set Up
 ```
