@@ -173,4 +173,32 @@ pip install pathlib
 sudo apt-get install exfat-fuse
 sudo apt-get install exfat-utils
 ```
+# Add Required Directories
+```
+cd Hook-Deployment/
+bash setup-dirs.bash
+```
 
+# Add Environmental Data Collection to Crontab for every 10 min
+```
+crontab -e
+```
+Copy and paste this line into the Crontab
+```
+#Collect Environmental Data
+*/10 * * * * /usr/bin/python3 /home/pi/Hook-Deployment/sensor_collect.py >> /DATA/logs/sensors.log
+```
+CTRL X to exit and then save 
+# Add the File Transfer and Clean up to Crontab
+```
+crontab -e
+```
+Copy and Paste these lines into the Crontab
+```
+#Sensor file (csv) transfers
+* 12 * * * /home/pi/upstream/stengl-minio-tests/transfersensorfiles.bash >> /DATA/logs/sound-xfer.log
+
+#Sensor file (csv)  clean up
+* 13 1-31/2 * * /home/pi/upstream/stengl-minio-tests/cleanup-all-transferedsensorfiles.bash >> /DATA/logs/soundfile-cleanup.log
+```
+CTRL X to exit and then save
