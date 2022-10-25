@@ -31,7 +31,7 @@ bash minio-clientsetup.bash
 ```
 # Set up the Sunset/Sunrise Recordings
 ``` 
-pip3 install python-dateutil –upgrade 
+pip3 install python-dateutil
 sudo apt -y install at
 sudo pip3 install python-dateutil
 rm -rf /home/pi/upstream
@@ -43,7 +43,8 @@ sudo chown pi /var/spool/cron/crontabs/pi
 sudo systemctl restart cron 
 cd /home/pi/upstream-rpi 
 rm sunrise-sunset-times.txt 
-mv /Hook-Deployment/sunrise-sunset-times.txt /upstream-rpi/sunrise-sunset-times.txt
+cd ~
+mv Hook-Deployment/sunrise-sunset-times.txt upstream-rpi/sunrise-sunset-times.txt
 ```
 Schedule the Recordings
 ```
