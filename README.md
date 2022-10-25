@@ -10,12 +10,13 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-# Install pip
+# Install Packages
 ```
 sudo apt install git
 sudo apt install pip
 sudo apt-get install python3-pip
 sudo pip3 install --upgrade setuptools
+sudo apt-get install -y i2c-tools
 ```
 # Clone the repositories
 Enter these commands from the home directory
