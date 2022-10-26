@@ -15,15 +15,15 @@ try:
 	# setting location's Pressure (hPa) at Sea level, Austin TX
 	bme280.sea_level_pressure = 1019
 except:
-	print("BME280 i2c address could not be found.")
+	print(strftime("%Y-%m-%d-%H:%M:%S") + ": BME280 i2c address could not be found.")
 try:
 	ss = Seesaw(i2c, addr = 0x36)
 except:
-	print("Soil Moisture Sensor 1 at 0x36 could not be found.")
+	print(strftime("%Y-%m-%d-%H:%M:%S") + ": Soil Moisture Sensor 1 at 0x36 could not be found.")
 try:
 	ss2 = Seesaw(i2c, addr = 0x37)
 except:
-	print("Soil Moisture Sensor 2 at 0x37 could not be found.")
+	print("%Y-%m-%d-%H:%M:%S") + ": Soil Moisture Sensor 2 at 0x37 could not be found.")
 
 # Get Hostname and Location
 Hostname = uname()[1]
@@ -53,7 +53,7 @@ with open(FileName, "a") as log:
 			pres = bme280.pressure
 			alt = bme280.altitude
 		except:
-			print("Could not collect data from the BME280.")
+			print(strftime("%Y-%m-%d-%H:%M:%S") + ": Could not collect data from the BME280.")
 			temp="n/a"
 			hum="n/a"
 			pres="n/a"
@@ -62,14 +62,14 @@ with open(FileName, "a") as log:
 			mois1 = ss.moisture_read()
 			smtemp1 = ss.get_temp()
 		except:
-			print("Could not collect data from SS1 at 0x36.")
+			print(strftime("%Y-%m-%d-%H:%M:%S") + ": Could not collect data from SS1 at 0x36.")
 			mois1="n/a"
 			smtemp1="n/a"
 		try:
 			mois2 = ss2.moisture_read()
 			smtemp2 = ss2.moisture_read()
 		except:
-			print("Could not collect data from SS2 at 0x37.")
+			print(strftime("%Y-%m-%d-%H:%M:%S") + ": Could not collect data from SS2 at 0x37.")
 			mois2="n/a"
 			smtemp2="n/a"
 		
