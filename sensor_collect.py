@@ -12,6 +12,8 @@ from adafruit_seesaw.seesaw import Seesaw
 i2c = board.I2C()
 try:
 	bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
+	# setting location's Pressure (hPa) at Sea level, Austin TX
+	bme280.sea_level_pressure = 1019
 except:
 	print("BME280 i2c address could not be found.")
 try:
@@ -22,9 +24,6 @@ try:
 	ss2 = Seesaw(i2c, addr = 0x37)
 except:
 	print("Soil Moisture Sensor 2 at 0x37 could not be found.")
-
-# setting location's Pressure (hPa) at Sea level, Austin TX
-bme280.sea_level_pressure = 1019
 
 # Get Hostname and Location
 Hostname = uname()[1]
