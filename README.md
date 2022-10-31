@@ -204,3 +204,14 @@ Copy and Paste these lines into the Crontab
 * 13 1-31/2 * * /home/pi/upstream/stengl-minio-tests/cleanup-all-transferedsensorfiles.bash >> /DATA/logs/soundfile-cleanup.log
 ```
 CTRL X to exit and then save
+
+# Setting Up Minio client
+```
+cd upstream-rpi/stengl-minio-tests/
+bash minio-clientsetup.bash
+nano .env
+```
+You will need to use Stache.utexas to get the information to enter into the .env file. Once the information is copied, use CTRL+X to exit and save. Enter this command to test
+```
+python3 stengl-miniotest.py
+```
