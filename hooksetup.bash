@@ -1,4 +1,5 @@
-# This File installs and runs all the necesarry commands to set up a fresh Pi with the Hook/Upstream repositories
+#!/bin/bash 
+#This File installs and runs all the necesarry commands to set up a fresh Pi with the Hook/Upstream repositories
 # run this file with `bash hooksetup.bash`
 
 # Update and Upgrade the RPi to make sure it's up to date
@@ -29,6 +30,10 @@ sudo pip3 install adafruit-circuitpython-seesaw
 echo "Adding required directories"
 bash /home/pi/Hook-Deployment/setup-dirs.bash
 
+# Making Files executable
+sudo chmod +x /home/pi/Hook-Deployment/display.py
+sudo chmod +x /home/pi/Hook-Deployment/sensor_collect.py
+
 # Installing Python Modules for the MinIO tests
 echo "Installing Python Modules for the MinIO tests"
 cd upstream-rpi/stengl-minio-tests 
@@ -37,7 +42,7 @@ bash minio-clientsetup.bash
 # Setting up the Sunset and Sunrise Recordings
 echo "Setting up the Sunrise Sunset Recording Schedule"
 rm -rf /home/pi/upstream
-ln -s /home/pi/upstream-rpi upstream
+ln -s /home/pi/upstream-rpi /home/pi/upstream
 mkdir /home/pi/upstream/sound 
 sudo cp /home/pi/upstream/crontabs.txt /var/spool/cron/crontabs/pi 
 sudo chmod 0600 /var/spool/cron/crontabs/pi 
