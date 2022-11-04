@@ -17,6 +17,8 @@ pip3 install python-dateutil
 sudo apt -y install at
 sudo pip3 install python-dateutil
 sudo pip3 install --upgrade adafruit-python-shell
+wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
+sudo python3 raspi-blinka.py
 pip install pathlib
 sudo apt-get install exfat-fuse
 sudo apt-get install exfat-utils
