@@ -118,6 +118,28 @@ cd upstream-rpi/sound/
 ls
 ```
 There should be a new recoring with the pi's hostname in the directory 
+# Set the Soft Shutdown and Display Scripts to run in background on startup
+```
+sudo nano /etc/rc.local
+```
+Enter these lines befor the 'exit 0' at the end of the file
+```
+# Run Soft Shutdown script
+sudo python3 /home/pi/Hook-Deployment/softshutdown.py &
+
+# Run Display Script
+sudo python3 /home/pi/Hook-Deployment/display.py &
+```
+# Add the Display Script to Crontab 
+```
+crontab -e
+```
+Enter the following lines into crontab
+```
+# Update Display
+* * * * * python3 /home/pi/Hook-Deployment/display.py
+```
+
 # Add Environmental Data Collection to Crontab for every 10 min
 ```
 crontab -e
