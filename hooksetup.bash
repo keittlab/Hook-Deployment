@@ -21,11 +21,18 @@ wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/m
 pip install pathlib
 sudo apt-get install exfat-fuse
 sudo apt-get install exfat-utils
+sudo apt-get install python3-pil
+sudo apt-get install python3-numpy
+pip3 install adafruit-circuitpython-display-text
 
 # Installing Sensor Libraries
 echo "Installing Sensor Libraries"
 pip3 install adafruit-circuitpython-bme280
 sudo pip3 install adafruit-circuitpython-seesaw
+pip3 install adafruit-circuitpython-ssd1306
+pip3 install adafruit-circuitpython-displayio-ssd1306
+sudo python -m pip install --upgrade pip setuptools wheel
+sudo pip install Adafruit-SSD1306
 
 # Set Up Required Directories
 echo "Adding required directories"
