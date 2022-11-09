@@ -17,11 +17,18 @@ sudo apt-get install python3-pip
 sudo pip3 install --upgrade setuptools
 sudo apt-get install -y i2c-tools
 ```
-#Enable SSH and i2c
+# Enable SSH and i2c
 ```
 sudo raspi-config
 ```
 Select '3 Interface Options' and enable SSH, then repeat and enable I2C
+
+# Make sure the Timezone is correct
+```
+sudo raspi-config
+```
+select "5 Localization Options", then select "L2 Timezone" and select the correct timezone, for Austin select US then Central
+
 # Set Up the RTC
 ```
 sudo nano /boot/config.txt
@@ -57,16 +64,6 @@ Check the rtc time
 ```
 sudo hwclock -D -r
 ```
-To check the RTC time
-```
-sudo hwclock -r 
-```
-Make sure the Timezone is correct
-```
-sudo raspi-config
-```
-select "5 Localization Options", then select "L2 Timezone" and select the correct timezone, for Austin select US then Central
-
 # Clone the repositories
 Enter these commands from the home directory
 ```
@@ -84,18 +81,6 @@ sudo python raspi-blinka.py
 # Check Blinka
 ```
 python3 Hook-Deployment/blinkatest.py
-```
-# Configure the Soft Shutdown button
-``` 
-sudo nano /boot/config.txt
-```
-Add this line to the end of the file with the pin number, in this case 27
-```
-dtoverylay=gpio-shutdown,gpio_pin=27,active_low=1,gpio_pull=up
-```
-Exit and save the file then reboot
-```
-sudo reboot
 ```
 # Checking the i2c devices  
 Solder the AD0 pad on ONE of the Soil moisture sensors to change the i2c address for one of the soil moisture sensors to 0x37
