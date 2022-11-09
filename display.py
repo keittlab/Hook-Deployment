@@ -67,36 +67,39 @@ draw = ImageDraw.Draw(image)
 # Load default font.
 font = ImageFont.load_default()
 
-while True:
-        # Draw a black filled box to clear the image.
-        draw.rectangle((0,0,width,height), outline=0, fill=0)
+#while True:
+# Draw a black filled box to clear the image.
+draw.rectangle((0,0,width,height), outline=0, fill=0)
 
-        # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/1191>        cmd = "hostname -I | cut -d\' \' -f1"
-        IP = subprocess.check_output(cmd, shell = True )
-        Hostname = uname()[1]
-        cmd = "iwgetid"
-        try:
-                Wifi = subprocess.check_output(cmd, shell = True )
-        except:
-                Wifi = "No Wifi"
-        # Collect BME Data
-        try:
-                temp = bme280.temperature
-                hum = bme280.relative_humidity
-        except:
-                print(strftime("%Y-%m-%d-%H:%M:%S") + ": Could not collect data from the BME280.")
-                temp="n/a"
-                hum="n/a"
+# Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/c>
+cmd = "hostname -I | cut -d\' \' -f1"
+IP = subprocess.check_output(cmd, shell = True )
+Hostname = uname()[1]
+cmd = "sudo iwgetid"
 
-        # Write Strings to the display
-        draw.text((x, top),       "Host Name: " + str(Hostname),  font=font, fill=255)
-        draw.text((x, top+8),     "IP: " + str(IP),  font=font, fill=255)
-        draw.text((x, top+16),    strftime("%Y-%m-%d:%H:%M:%S"),  font=font, fill=255)
-        draw.text((-70, top+25),    str(Wifi),  font=font, fill=255)
-        draw.text((x, top+33),    "BME Temp: " + str(temp),  font=font, fill=255)
-        draw.text((x, top+41),    "BME Hum: " + str(hum),  font=font, fill=255)
-        
-        # Display image.
-        disp.image(image)
-        disp.display()
-        sleep(1)
+try:
+        Wifi = subprocess.check_output(cmd, shell = True )
+except:
+        Wifi = "No Wifi"
+
+# Collect BME Data
+try:
+        temp = bme280.temperature
+        hum = bme280.relative_humidity
+except:
+        print(strftime("%Y-%m-%d-%H:%M:%S") + ": Could not collect data from the BME280.")
+        temp="n/a"
+        hum="n/a"
+
+# Write Strings to the display
+draw.text((x, top),       "Host Name: " + str(Hostname),  font=font, fill=255)
+draw.text((x, top+8),     "IP: " + str(IP),  font=font, fill=255)
+draw.text((x, top+16),    strftime("%Y-%m-%d:%H:%M:%S"),  font=font, fill=255)
+draw.text((-70, top+25),    str(Wifi),  font=font, fill=255)
+draw.text((x, top+33),    "BME Temp: " + str(temp),  font=font, fill=255)
+draw.text((x, top+41),    "BME Hum: " + str(hum),  font=font, fill=255)
+
+# Display image.
+disp.image(image)
+disp.display()
+sleep(1)
