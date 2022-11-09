@@ -23,7 +23,7 @@ except:
 try:
 	ss2 = Seesaw(i2c, addr = 0x37)
 except:
-	print("%Y-%m-%d-%H:%M:%S") + ": Soil Moisture Sensor 2 at 0x37 could not be found.")
+	print(strftime("%Y-%m-%d-%H:%M:%S") + ": Soil Moisture Sensor 2 at 0x37 could not be found.")
 
 # Get Hostname and Location
 Hostname = uname()[1]
