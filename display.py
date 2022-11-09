@@ -80,7 +80,7 @@ cmd = "sudo iwgetid"
 try:
         Wifi = subprocess.check_output(cmd, shell = True )
 except:
-        Wifi = "No Wifi"
+        Wifi = "          No Wifi"
 
 # Collect BME Data
 try:
