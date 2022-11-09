@@ -57,14 +57,16 @@ Check the rtc time
 ```
 sudo hwclock -D -r
 ```
-To set the RTC time 
-```
-sudo hwclock -w 
-```
 To check the RTC time
 ```
 sudo hwclock -r 
 ```
+Make sure the Timezone is correct
+```
+sudo raspi-config
+```
+select "5 Localization Options", then select "L2 Timezone" and select the correct timezone, for Austin select US then Central
+
 # Clone the repositories
 Enter these commands from the home directory
 ```
