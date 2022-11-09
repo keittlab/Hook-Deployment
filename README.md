@@ -108,6 +108,16 @@ Should see this output
 ![image](https://user-images.githubusercontent.com/45701166/195462601-e89c3723-71dc-4676-90ad-39358cb91333.png)
 
 The BME280 address should be 0x77, The Soil Moisture sensors should be 0x36 and 0x37, the RTC should be 0xUU in cell 0x68, the Display should be 0x3c
+# Check that the Microphone is Recording
+```
+./upstream-rpi/upstream-sound.bash
+```
+Wait for the recording to finish and check the sound directory in /upstream-rpi to see if there is a recording
+```
+cd upstream-rpi/sound/
+ls
+```
+There should be a new recoring with the pi's hostname in the directory 
 # Add Environmental Data Collection to Crontab for every 10 min
 ```
 crontab -e
