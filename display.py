@@ -1,4 +1,4 @@
- Copyright (c) 2017 Adafruit Industries
+# Copyright (c) 2017 Adafruit Industries
 # Author: Tony DiCola & James DeVito
 
 import board
