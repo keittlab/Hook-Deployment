@@ -139,6 +139,10 @@ Enter the following lines into crontab
 # Update Display
 * * * * * python3 /home/pi/Hook-Deployment/display.py
 ```
+Enter this line at the top of the file underneath the other reboot commands
+```
+@reboot python3 /home/pi/Hook-Deployment/softshutdown.py &
+```
 
 # Add Environmental Data Collection to Crontab for every 10 min
 ```
