@@ -13,8 +13,11 @@ fi
 
 echo "Sending files."
 
-#cat $SENSORFILES_DIR/../logs/environmental-xfer-temp.log-$TIMESTAMP | while read line;do /usr/bin/pyth>cat $SENSORFILES_DIR/../logs/environmental-xfer-temp.log-$TIMESTAMP | while read line; do
-        if [[ `(/usr/bin/python3 /home/pi/upstream/stengl-minio-tests/stengl-minio-sizeonly-check-clean>              echo "File $SENSORFILES_DIR/$line already sync'd"
-        else
-               /usr/bin/python3 /home/pi/upstream/stengl-minio-tests/sendtocorral-minio.py $SENSORFILES>        fi;
+#cat $SOUNDFILES_DIR/../data/sound-xfer-temp.log-$TIMESTAMP | while read line;do /usr/bin/python3 $SOUNDFILES_DIR/../stengl-minio-tests/sendtocorral-minio.py $SOUNDFILES_DIR/$line; done
+cat $SENSORFILES_DIR/../logs/environmental-xfer-temp.log-$TIMESTAMP | while read line; do
+	if [[ `(/usr/bin/python3 $SOUNDFILES_DIR/../stengl-minio-tests/stengl-minio-md5check-cleanoutput.py $SENSORFILES_DIR/$line)` == true ]]; then
+	      echo "File $SENSORFILES_DIR/$line already sync'd"
+        else 
+               /usr/bin/python3 $SENSORFILES_DIR/../stengl-minio-tests/sendtocorral-minio.py $SENSORFILES_DIR/$line
+	fi;
 done
