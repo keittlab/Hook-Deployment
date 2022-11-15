@@ -41,6 +41,8 @@ bash /home/pi/Hook-Deployment/setup-dirs.bash
 # Making Files executable
 sudo chmod +x /home/pi/Hook-Deployment/display.py
 sudo chmod +x /home/pi/Hook-Deployment/sensor_collect.py
+sudo chmod +x /home/pi/Hook-Deployment/transfersensorfiles.bash
+sudo chmod +x /home/pi/Hook-Deployment/cleanup-all-transferedsensorfiles.bash
 
 # Installing Python Modules for the MinIO tests
 echo "Installing Python Modules for the MinIO tests"
