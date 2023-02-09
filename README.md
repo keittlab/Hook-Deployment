@@ -29,6 +29,16 @@ sudo raspi-config
 ```
 select "5 Localization Options", then select "L2 Timezone" and select the correct timezone, for Austin select US then Central
 
+# Clone the repositories
+Enter these commands from the home directory
+```
+git clone https://github.com/jeaimehp/upstream-rpi.git
+git clone https://github.com/keittlab/Hook-Deployment.git
+```
+# Run the Setup bash script
+```
+bash Hook-Deployment/hooksetup.bash
+```
 # Set Up the RTC
 ```
 sudo nano /boot/config.txt
@@ -63,16 +73,6 @@ Comment out these lines with a #
 Check the rtc time
 ```
 sudo hwclock -D -r
-```
-# Clone the repositories
-Enter these commands from the home directory
-```
-git clone https://github.com/jeaimehp/upstream-rpi.git
-git clone https://github.com/keittlab/Hook-Deployment.git
-```
-# Run the Setup bash script
-```
-bash Hook-Deployment/hooksetup.bash
 ```
 # Run the Raspi-Blinka Scripts, enter Y, will reboot the pi
 ```
