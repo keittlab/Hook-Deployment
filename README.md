@@ -132,6 +132,14 @@ CTRL X to exit and then save
 ```
 crontab -e
 ```
+# Add the Sensor Data Transfer script for TACC
+```
+cp /home/pi/Hook-Deployment/transfersensorfiles.bash /home/pi/upstream/stengl-minio-tests/transfersensorfiles.bash
+```
+# Add the Sensor Data Cleanup script
+```
+cp /home/pi/Hook-Deployment/cleanup-all-transferedsensorfiles.bash /home/pi/upstream/stengl-minio-tests/cleanup-all-transferedsensorfiles.bash
+```
 Copy and Paste these lines into the Crontab
 ```
 #Sensor file (csv) transfers
