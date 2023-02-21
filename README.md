@@ -127,11 +127,7 @@ Copy and paste this line into the Crontab
 #Collect Environmental Data
 */10 * * * * /usr/bin/python3 /home/pi/Hook-Deployment/sensor_collect.py >> /DATA/logs/sensors.log
 ```
-CTRL X to exit and then save 
-# Add the File Transfer and Clean up to Crontab
-```
-crontab -e
-```
+CTRL X to exit and then save
 # Add the Sensor Data Transfer script for TACC
 ```
 cp /home/pi/Hook-Deployment/transfersensorfiles.bash /home/pi/upstream/stengl-minio-tests/transfersensorfiles.bash
@@ -139,6 +135,10 @@ cp /home/pi/Hook-Deployment/transfersensorfiles.bash /home/pi/upstream/stengl-mi
 # Add the Sensor Data Cleanup script
 ```
 cp /home/pi/Hook-Deployment/cleanup-all-transferedsensorfiles.bash /home/pi/upstream/stengl-minio-tests/cleanup-all-transferedsensorfiles.bash
+``` 
+# Add the File Transfer and Clean up to Crontab
+```
+crontab -e
 ```
 Copy and Paste these lines into the Crontab
 ```
