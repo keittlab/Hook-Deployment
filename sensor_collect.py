@@ -67,7 +67,7 @@ with open(FileName, "a") as log:
 			smtemp1="n/a"
 		try:
 			mois2 = ss2.moisture_read()
-			smtemp2 = ss2.moisture_read()
+			smtemp2 = ss2.get_temp()
 		except:
 			print(strftime("%Y-%m-%d-%H:%M:%S") + ": Could not collect data from SS2 at 0x37.")
 			mois2="n/a"
